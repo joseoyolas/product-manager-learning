@@ -18,7 +18,7 @@ Build an internal data product that surfaces churn risk scores for accounts at l
 ## Success Metrics
 
 - 80% of churned accounts appear in the top-20% risk tier at least 30 days before churn
-- CS team adoption: >70% of CSMs actively using the signal within 60 days of launch
+- CS team adoption: >60% of CSMs actively using the signal within 60 days of launch
 - Reduction in reactive escalations by 25% within one quarter
 
 ## Users
