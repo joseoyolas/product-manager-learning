@@ -75,6 +75,23 @@ All input data must be available in the central data warehouse (not pulled ad ho
 
 ---
 
+## Risks
+
+| Risk | Likelihood | Impact | Mitigation |
+|---|---|---|---|
+| CRM data is incomplete or inconsistently maintained | High | High | Audit CRM data quality before model training; flag accounts with missing fields rather than imputing silently |
+| Model accuracy is too low to be trusted by CSMs | Medium | High | Run a backtest on 12 months of historical data before launch; set a minimum precision threshold as a go/no-go criterion |
+| CS team ignores the signal and reverts to gut feel | Medium | High | Involve 2–3 CSMs in design and testing; tie adoption metric to team OKRs |
+| Input pipeline failure causes stale scores | Medium | Medium | Add monitoring and alerting on pipeline jobs; surface data freshness timestamp in dashboard |
+| New accounts have insufficient history to score | High | Low | Display explicit "insufficient data" state rather than a score; define minimum account age threshold |
+| Scoring model encodes historical bias (e.g., segments treated unfairly) | Low | High | Review score distributions across segments before launch; document known limitations |
+
+### Risk Summary
+
+The two highest-priority risks are **data quality** (CRM completeness) and **adoption**. Both should be addressed before launch, not after. A technically accurate model that CSMs don't trust or use delivers zero value.
+
+---
+
 ## Open Questions
 
 1. What is the source of truth for "churned" — contract end date or last login?
