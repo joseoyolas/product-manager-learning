@@ -92,6 +92,31 @@ The two highest-priority risks are **data quality** (CRM completeness) and **ado
 
 ---
 
+## Timeline
+
+| Phase | Activities | Target Date | Owner |
+|---|---|---|---|
+| **Phase 0 — Discovery** | Data quality audit, CRM completeness review, align on "churned" definition | Week 1–2 | Data Engineering + RevOps |
+| **Phase 1 — Data Prep** | Pipeline builds for all 4 input sources, warehouse validation, data quality checks live | Week 3–5 | Data Engineering |
+| **Phase 2 — Model Development** | Feature engineering, model training, backtest on 12 months of history, precision threshold review | Week 6–9 | Data Science |
+| **Phase 3 — Dashboard Integration** | Score surfaced in CS dashboard, explainability factors visible, freshness timestamp shown | Week 9–11 | Data Engineering + Product |
+| **Phase 4 — Pilot** | 5–8 CSMs using signal in their workflow, feedback collected, model adjustments if needed | Week 12–14 | CS Leadership + Data Science |
+| **Phase 5 — Launch** | Full CS team rollout, adoption tracking live, retraining cadence established | Week 15–16 | Product + CS Ops |
+
+### Key Milestones
+
+- **End of Week 2:** Go/no-go on data quality — if CRM completeness is below threshold, scope is adjusted before model work begins
+- **End of Week 9:** Backtest results reviewed with CS Leadership — minimum precision threshold must be met to proceed to integration
+- **End of Week 14:** Pilot retrospective — adoption and feedback determine if full rollout proceeds on schedule
+
+### Assumptions
+
+- Data warehouse access and permissions are in place before Phase 1 begins
+- A CS pilot group is identified and committed by end of Week 10
+- No major product or pricing changes during model training period (would require retraining)
+
+---
+
 ## Open Questions
 
 1. What is the source of truth for "churned" — contract end date or last login?
