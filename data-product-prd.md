@@ -40,6 +40,41 @@ Build an internal data product that surfaces churn risk scores for accounts at l
 - Automated outreach or action triggers
 - Predictive expansion/upsell signals (future phase)
 
+## Technical Requirements
+
+### Data Inputs
+
+| Source | Data Elements Needed | Owner |
+|---|---|---|
+| Product event logs | Login frequency, feature usage, session duration, API call volume | Data Engineering |
+| CRM data | Account tier, ARR, CSM assignment, open opportunities, health score | Sales Ops |
+| Contract data | Contract start/end dates, renewal dates, add-on history, payment status | Finance / RevOps |
+| Support system | Ticket volume, severity, time-to-resolution, escalation flags | CS Ops |
+
+All input data must be available in the central data warehouse (not pulled ad hoc from source systems).
+
+### Refresh Cadence
+
+- **Churn risk scores:** Updated daily, processed overnight (target: available by 7am local time for CS team)
+- **Underlying input data:** Must be no more than 24 hours stale at time of model run
+- **Model retraining:** Monthly, or triggered manually after significant product/pricing changes
+
+### Latency Requirements
+
+| Interaction | Acceptable Latency |
+|---|---|
+| Risk score load in CS dashboard | < 3 seconds (p95) |
+| Full account risk factor breakdown | < 5 seconds (p95) |
+| Batch score refresh (overnight job) | Must complete within 4-hour window (2am–6am) |
+
+### Data Quality Requirements
+
+- Input pipelines must have data quality checks with alerting on failure — a failed pipeline should not silently produce stale scores
+- Risk scores must include a `data_freshness_timestamp` so CSMs can see when the score was last calculated
+- Null or missing scores (e.g., new accounts with insufficient history) must be surfaced explicitly, not defaulted to "low risk"
+
+---
+
 ## Open Questions
 
 1. What is the source of truth for "churned" — contract end date or last login?
