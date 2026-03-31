@@ -1,6 +1,6 @@
 # PRD: Internal Data Product — Customer Churn Signal
 
-**Status:** Draft
+**Status:** In Review
 **Author:** Jose Oyola
 **Last Updated:** 2026-03-30
 **Version:** 0.1
