@@ -40,6 +40,20 @@ Build an internal data product that surfaces churn risk scores for accounts at l
 - Automated outreach or action triggers
 - Predictive expansion/upsell signals (future phase)
 
+## Stakeholders
+
+| Name | Role | Involvement |
+|---|---|---|
+| CS Leadership | Decision maker | Approve go/no-go at each milestone; define pilot group |
+| Data Engineering Lead | Accountable | Pipeline builds, data quality checks, dashboard integration |
+| Data Science Lead | Accountable | Model development, backtesting, retraining cadence |
+| Sales Ops | Consulted | CRM data access and quality remediation |
+| Finance / RevOps | Consulted | Contract data access and definitions |
+| CS Ops | Consulted | Support system data access |
+| 2–3 pilot CSMs | Informed + testers | Early feedback during pilot phase |
+
+---
+
 ## Technical Requirements
 
 ### Data Inputs
